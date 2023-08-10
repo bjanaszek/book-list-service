@@ -9,13 +9,13 @@ apiRouter.post('/v1/books', async (req, res) => {
     const { author, title, publisher, dateRead } = req.body;
     const result = await Books.insert({ author, title, publisher, dateRead });
 
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 });
 
 apiRouter.get('/v1/books', async (req, res) => {
     console.log('Handling GET to /v1/books');
     const result = await Books.getAll();
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 });
 
 apiRouter.delete('/v1/books/:id', async (req, res) => {
@@ -23,5 +23,5 @@ apiRouter.delete('/v1/books/:id', async (req, res) => {
     console.log(`Handling DELETE to /v1/books/:${id}`);
     const result = await Books.delete(id);
 
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 });

@@ -17,7 +17,7 @@ pool.on('error', (err, client) => {
     process.exit(-1);
 });
 
-export const query = async (text: any, params: any) => {
+export const query = async (text: any, params: any): Promise<any> => {
     const client = await pool.connect();
     const res = await pool.query(text, params);
     client.release();

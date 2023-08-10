@@ -21,16 +21,16 @@ exports.apiRouter.post('/v1/books', (req, res) => __awaiter(void 0, void 0, void
     console.log(`Handling POST to /v1/books: ${req.body}`);
     const { author, title, publisher, dateRead } = req.body;
     const result = yield books_1.default.insert({ author, title, publisher, dateRead });
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 }));
 exports.apiRouter.get('/v1/books', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Handling GET to /v1/books');
     const result = yield books_1.default.getAll();
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 }));
 exports.apiRouter.delete('/v1/books/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     console.log(`Handling DELETE to /v1/books/:${id}`);
     const result = yield books_1.default.delete(id);
-    res.status(HTTP_STATUS_OK).send(result);
+    res.status(HTTP_STATUS_OK).json(result);
 }));
