@@ -2,5 +2,5 @@ export interface Book {
     title: string;
     author: string;
     publisher: string;
-    dateRead: Date;
+    date_read: Date;
 }

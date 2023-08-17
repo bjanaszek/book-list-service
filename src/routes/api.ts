@@ -6,15 +6,20 @@ export const apiRouter = Express.Router();
 
 apiRouter.post('/v1/books', async (req, res) => {
     console.log(`Handling POST to /v1/books: ${req.body}`);
-    const { author, title, publisher, dateRead } = req.body;
-    const result = await Books.insert({ author, title, publisher, dateRead });
+    const { author, title, publisher, date_read } = req.body;
+    const result = await Books.insert({ author, title, publisher, date_read });
 
     res.status(HTTP_STATUS_OK).json(result);
 });
 
 apiRouter.get('/v1/books', async (req, res) => {
     console.log('Handling GET to /v1/books');
-    const result = await Books.getAll();
+    const dbresult = await Books.getAll();
+    const result = {
+        count: dbresult.rowCount,
+        books: dbresult.rows
+    };
+    
     res.status(HTTP_STATUS_OK).json(result);
 });
 

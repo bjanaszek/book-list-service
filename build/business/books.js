@@ -28,7 +28,7 @@ class Books {
     }
     static insert(book) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (0, db_1.query)('INSERT INTO books(id, title, author, publisher, date_read) VALUES (DEFAULT, $1, $2, $3, $4)', [book.title, book.author, book.publisher, book.dateRead]);
+            return (0, db_1.query)('INSERT INTO books(id, title, author, publisher, date_read) VALUES (DEFAULT, $1, $2, $3, $4)', [book.title, book.author, book.publisher, book.date_read]);
         });
     }
 }

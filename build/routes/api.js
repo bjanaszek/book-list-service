@@ -19,13 +19,17 @@ const HTTP_STATUS_OK = 200;
 exports.apiRouter = express_1.default.Router();
 exports.apiRouter.post('/v1/books', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(`Handling POST to /v1/books: ${req.body}`);
-    const { author, title, publisher, dateRead } = req.body;
-    const result = yield books_1.default.insert({ author, title, publisher, dateRead });
+    const { author, title, publisher, date_read } = req.body;
+    const result = yield books_1.default.insert({ author, title, publisher, date_read });
     res.status(HTTP_STATUS_OK).json(result);
 }));
 exports.apiRouter.get('/v1/books', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Handling GET to /v1/books');
-    const result = yield books_1.default.getAll();
+    const dbresult = yield books_1.default.getAll();
+    const result = {
+        count: dbresult.rowCount,
+        books: dbresult.rows
+    };
     res.status(HTTP_STATUS_OK).json(result);
 }));
 exports.apiRouter.delete('/v1/books/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

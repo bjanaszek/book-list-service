@@ -15,6 +15,6 @@ export default class Books {
     }
 
     static async insert(book:Book): Promise<any> {
-        return query('INSERT INTO books(id, title, author, publisher, date_read) VALUES (DEFAULT, $1, $2, $3, $4)', [book.title, book.author, book.publisher, book.dateRead]);
+        return query('INSERT INTO books(id, title, author, publisher, date_read) VALUES (DEFAULT, $1, $2, $3, $4)', [book.title, book.author, book.publisher, book.date_read]);
     }
 }
